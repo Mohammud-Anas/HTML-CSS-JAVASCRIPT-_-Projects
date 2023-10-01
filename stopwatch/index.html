@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="display">00:00:00</h1>
+      <div class="btn">
+        <button id="toggleBtn" onclick="startStop()">Start</button>
+        <button onclick="reSet()">Reset</button>
+      </div>
+    </div>
+    <script>
+      let isStart = false;
+      let timer;
+      let seconds = 0;
+      let minutes = 0;
+      let hours = 0;
+      function reSet() {
+        clearInterval(timer);
+        isStart = false;
+        seconds = 0;
+        minutes = 0;
+        hours = 0;
+        document.getElementById("display").innerHTML = "00:00:00";
+        document.getElementById("toggleBtn").innerHTML = "Start";
+      }
+
+      function startStop() {
+        if (isStart) {
+          clearInterval(timer);
+          document.getElementById("toggleBtn").innerHTML = "Start";
+        } else {
+          timer = setInterval(updateTimer, 1000);
+          document.getElementById("toggleBtn").innerHTML = "Stop";
+        }
+        isStart = !isStart;
+      }
+      function updateTimer() {
+        seconds++;
+        if (seconds === 60) {
+          seconds = 0;
+          minutes++;
+          if (minutes === 60) {
+            minutes = 0;
+            hours++;
+          }
+        }
+
+        let display = document.getElementById("display");
+        display.innerHTML = `${padZero(hours)}:${padZero(minutes)}:${padZero(
+          seconds
+        )} `;
+      }
+      function padZero(value) {
+        return value < 10 ? "0" + value : value;
+      }
+    </script>
+  </body>
+</html>
