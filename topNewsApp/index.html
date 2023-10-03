@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top News || Get The Latest News Here</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-content flex">
+        <img src="icon.png" alt="Top News" id="icon" />
+        <div class="nav-content-link">
+          <ul class="flex ul">
+            <li onclick="searchKey('entertainment')"id ="entertainment">Entertainment</li>
+            <li onclick="searchKey('business')"id ="business">Business</li>
+            <li onclick="searchKey('health')"id ="health">Health</li>
+            <li onclick="searchKey('science')"id ="science">Science</li>
+            <li onclick="searchKey('sports')"id ="sports">Sports</li>
+          </ul>
+        </div>
+        <div class="search-field flex">
+          <input type="search" id="input" placeholder="e.g Science or India" />
+          <button id="searchbtn" onclick="searchNews()">Search</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container flex" id="container">
+      
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
