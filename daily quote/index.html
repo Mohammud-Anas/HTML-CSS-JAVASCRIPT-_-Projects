@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Quotes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="quote-box">
+         <h2>Quote Of The Day</h2>
+         <h1>Loading.....</h1>
+         <div class="h3"><h3>Loading....</h3></div>
+         
+        </div>
+        <div class="buttons">
+            <button onclick="nextBtn()" id="next">NEXT</button>
+            <button id="tweet"> <img src="twitter.png" id="img">Tweet</button>
+        </div>
+    </div>
+    <script>
+        let  quote= document.querySelector(".quote-box h1");
+        let author =document.querySelector(".h3 h3");
+       let  quoteUrl="https://api.quotable.io/random";
+        const quoteLoader= async ()=>{
+            let resp =await fetch(quoteUrl);
+            let data = await resp.json();
+            quote.innerHTML = `" ${data.content} "`;
+            author.innerHTML = data.author;
+        }
+        quoteLoader(quoteUrl);
+
+         function nextBtn() {
+            quoteLoader(quoteUrl);
+        }
+    </script>
+</body>
+</html>
